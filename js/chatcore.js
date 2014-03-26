@@ -25,15 +25,6 @@ function createElements(){
 	for (var i = 0; i < statesT.length; ++i){
 		$('#tmenu').append(tpl('statusitem', {s1:states[i], s2:statesT[i], n:i}));
 	}
-	
-	$('#widget-help').widget({
-		hideCloseBtn:true,
-		title:'Правила чата',
-		x:$('#cont').width()-370,
-		y:119,
-		id:'help',
-		content:tpl('rules')
-	});
 	$('#widget-radio').widget({
 		hideCloseBtn:false,
 		title:'Аниме радио',
@@ -178,6 +169,10 @@ ch.response.onLogin = function(err,u){
 			showAuthWindow();
 		}
 		if(u=='wronghash'){
+			showAuthWindow();
+		}
+		if(u=='tryagain'){
+			alert('tryagain'); 
 			showAuthWindow();
 		}
 	}
@@ -436,6 +431,7 @@ function clickSetava(){
 	return false;
 }
 function clickUploadimage(){
+alert('пока еще не работает'); return true; ////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	var ifile = document.getElementById('uplFile');
 	$(ifile).trigger('click');
 	ifile.onchange = function(){
@@ -823,21 +819,24 @@ function showAuthWindow(){
 		showRegWindow();
 		return false;
 	});
-	VK.Widgets.Auth("vk_auth", {width: "200px", onAuth: VKauthProc});	
+	//VK.Widgets.Auth("vk_auth", {width: "200px", onAuth: VKauthProc});	
 }
 function showRegWindow(){
 	showForm(tpl('register'), 'Регистрация');
 	$('#reg_but').click(function(){
-		ch.registerVK($('#reg_login').val(), $('#reg_nick').val(), vkmid, vkrealname, vkurl);
+		ch.register($('#reg_login').val(), $('#reg_nick').val(), $('#reg_pass').val());
+		showAuthWindow();
+		return true;
+		//ch.registerVK($('#reg_login').val(), $('#reg_nick').val(), vkmid, vkrealname, vkurl);
 	});
 	$('#regbacklink').click(function(){
 		showAuthWindow();
 		return false;
 	});
-	$('#getregvk').click(function(){
+	/*$('#getregvk').click(function(){
 		VK.Auth.login(authInfoReg);
 		return false;
-	});
+	});*/
 }
 function authInfoReg(response){
 	if(response.session){

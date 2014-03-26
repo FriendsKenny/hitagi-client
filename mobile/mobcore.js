@@ -11,11 +11,11 @@ window.onload = function(e){
 	var ch = hitagiCreate(serverUrl, 8080);
 
 	ch.connect();
-	VK.init({apiId: VKAPIID});
+	/*VK.init({apiId: VKAPIID});
 	VK.Widgets.Auth("vk_auth", {width: "200px", onAuth: function(data){
 		if(!data) return false;
 		ch.login(data.uid, data.hash, true, true);
-	}});
+	}});*/
 	
 	ch.response.onConnect = function(){
 		ch.autoLogin(true);

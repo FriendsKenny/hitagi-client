@@ -26,9 +26,9 @@
 		<input type="button" id="logBtn" value="Войти" />
 	</div>
 	
-	<div align="center">
+	<!--<div align="center">
 		<div id="vk_auth"></div>
-	</div>
+	</div>-->
 	
 	<p style="margin:10px 0;">Мобильный чат сайта <a target="_blank" href="http://aniavatars.com">Aniavatars.com</a></p>
 </div>
